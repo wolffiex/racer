@@ -22,10 +22,10 @@ window.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, f
 console.log(navigator.getGamepads());
 
 function takeInput() {
-  var gamepads = navigator.getGamepads ? 
+  var gamepads = navigator.getGamepads ?
     navigator.getGamepads() :
     navigator.webkitGetGamepads();
-  
+
   var pad = gamepads[0];
   var axes = pad.axes;
 
@@ -57,7 +57,7 @@ class Sprite {
     context.drawImage(this.img, pos.x, pos.y);
   }
 };
-let car = new Sprite('./assets/car.png');
+let car = new Sprite('./assets/RacerMK1.png');
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
