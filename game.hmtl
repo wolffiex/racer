@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Racer</title>
-    <script src="game.js"></script>
+    <!-- run babel src –source-maps inline –out-dir dist  –watch -->
   </head>
   <body>
-  <div id='ax0'>0</div>
-  <div id='ax1'>0</div>
-  <div id='ax2'>0</div>
-  <div id='ax3'>0</div>
-	<canvas id="tutorial" width="150" height="150"></canvas>
+    <canvas id="canvas" width="800" height="400"></canvas>
+    <script src="dist/game.js"></script>
+    <div id='ax0'>0</div>
+    <div id='ax1'>0</div>
+    <div id='ax2'>0</div>
+    <div id='ax3'>0</div>
   </body>
 </html>
 
