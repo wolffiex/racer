@@ -1,67 +1,43 @@
 "use strict";
 import {Sprite} from './sprite';
+import {Car} from './car';
 var gamepads = {};
 
-function gamepadHandler(event, connecting) {
-	console.log('hi', event.gamepad.index);
-  var gamepad = event.gamepad;
-  // Note:
-  // gamepad === navigator.getGamepads()[gamepad.index]
-
-  if (connecting) {
-    gamepads[gamepad.index] = gamepad;
-  } else {
-    delete gamepads[gamepad.index];
-  }
-
-  console.log(gamepad);
-}
-
-window.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
-window.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
-
-console.log(navigator.getGamepads());
-
-function takeInput() {
-  var gamepads = navigator.getGamepads ?
+function pollGamepads() {
+  return navigator.getGamepads ?
     navigator.getGamepads() :
     navigator.webkitGetGamepads();
-
-  var pad = gamepads[0];
-  var axes = pad.axes;
-
-  //console.log(buttons);
-  for (var i=0; i < pad.axes.length; i++) {
-    var el = document.getElementById('ax' + i);
-    el.innerHTML = pad.axes[i];
-  }
-
-  return {x: axes[1], y: axes[3]};
 }
 
-var _pos = {r:0, x:100, y:100};
-var accel = {r: 0, x:0, y:0};
-function update(input) {
-  _pos.x += input.x;
-  _pos.y += input.y;
-  return _pos;
+function readInput(gamepads, gamepadNum) {
+  let axes = gamepads[gamepadNum].axes;
+  return {x: axes[0], y: axes[3]};
 }
 
-let car = new Sprite('./assets/RacerMK1.png');
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
-function render(pos) {
-  car.draw(context, pos);
+let lastTick = (new Date).getTime();
+function getElapsedTime() {
+  let lastLastTick = lastTick;
+  lastTick = (new Date).getTime();
+  return lastTick - lastLastTick;
 }
 
-
+let cars = [new Car(new Sprite('./assets/RacerMK1.png'))];
 function gameLoop() {
-  var input = takeInput();
-  var pos = update(input);
-  render(pos);
-  requestAnimationFrame(gameLoop);
 
+  let ms = getElapsedTime();
+  for (var i=0; i< ms; i++) {
+    cars.forEach(car => car.update());
+  }
+
+  cars.forEach(car => car.draw(context));
+
+  let gamepads = pollGamepads();
+  cars.forEach((car,n) => car.applyInput(readInput(gamepads, n)));
+
+  requestAnimationFrame(gameLoop);
 }
 
 requestAnimationFrame(gameLoop);

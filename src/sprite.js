@@ -5,7 +5,7 @@ export class Sprite {
     this.img = img;
   }
 
-  draw(context, pos){
-    context.drawImage(this.img, pos.x, pos.y);
+  draw(context){
+    context.drawImage(this.img, 0, 0);
   }
 };
