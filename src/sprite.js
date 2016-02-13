@@ -1,4 +1,4 @@
-export default class Sprite {
+export class Sprite {
   constructor(src) {
     var img = new Image();
     img.src = src

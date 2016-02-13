@@ -7,7 +7,7 @@
   </head>
   <body>
     <canvas id="canvas" width="800" height="400"></canvas>
-    <script src="dist/game.js"></script>
+    <script src="dist/bundle.js"></script>
     <div id='ax0'>0</div>
     <div id='ax1'>0</div>
     <div id='ax2'>0</div>

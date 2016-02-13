@@ -1,4 +1,5 @@
 "use strict";
+import {Sprite} from './sprite';
 var gamepads = {};
 
 function gamepadHandler(event, connecting) {
@@ -46,17 +47,6 @@ function update(input) {
   return _pos;
 }
 
-class Sprite {
-  constructor(src) {
-    var img = new Image();
-    img.src = src
-    this.img = img;
-  }
-
-  draw(context, pos){
-    context.drawImage(this.img, pos.x, pos.y);
-  }
-};
 let car = new Sprite('./assets/RacerMK1.png');
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
