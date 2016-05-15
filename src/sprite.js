@@ -9,6 +9,7 @@ export class Sprite {
   }
 
   draw(context){
-    context.drawImage(this.img, -this.width/2, -this.height/2);
+    console.log(-this.width/2, -this.height/2)
+    context.drawImage(this.img, 0,0);//-this.width/2, -this.height/2);
   }
 };

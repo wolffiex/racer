@@ -5,8 +5,8 @@ const BRAKE_POWER = .02;
 export class Car {
   constructor(sprite) {
     this._sprite = sprite;
-    this._position = {x:100, y:100 };
-    this._r = Math.PI;
+    this._position = {x:0, y:canvas.height/2 };
+    this._r = 0;
     this._speed = 0;
 
     this._wheelAngle = 0;

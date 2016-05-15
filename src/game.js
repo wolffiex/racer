@@ -20,6 +20,7 @@ function readInput(gamepads, gamepadNum) {
 
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
+canvas.style.backgroundColor = 'rgba(158, 167, 184, 0.2)';
 
 let lastTick = (new Date).getTime();
 function getElapsedTime() {
