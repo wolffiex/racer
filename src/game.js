@@ -10,8 +10,12 @@ function pollGamepads() {
 }
 
 function readInput(gamepads, gamepadNum) {
-  let axes = gamepads[gamepadNum].axes;
-  return {x: axes[0], y: axes[3]};
+  if (global.fakeInput) {
+    return global.fakeInput[gamepadNum];
+  } else {
+    let axes = gamepads[gamepadNum].axes;
+    return {x: axes[0], y: axes[3]};
+  }
 }
 
 var canvas = document.getElementById('canvas');

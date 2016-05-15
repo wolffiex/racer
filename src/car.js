@@ -1,5 +1,5 @@
-const STEERING_SENSITIVITY = .001;
-const THROTTLE_POWER = .05;
+const STEERING_SENSITIVITY = .004;
+const THROTTLE_POWER = .5;
 const BRAKE_POWER = .02;
 
 export class Car {

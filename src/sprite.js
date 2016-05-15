@@ -1,8 +1,8 @@
 export class Sprite {
   constructor(src) {
-    var img = new Image();
     this.width = 0;
     this.height = 0;
+    var img = new Image();
     img.onload = () => {this.width = img.width; this.height = img.height;};
     img.src = src
     this.img = img;

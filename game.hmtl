@@ -6,6 +6,19 @@
     <!-- run babel src –source-maps inline –out-dir dist  –watch -->
   </head>
   <body>
+    <script>
+      var fakeInput = [{x:0, y:0}];
+      function updateInput() {
+        fakeInput[0].x = document.forms.controllerOne.x.value;
+        fakeInput[0].y = document.forms.controllerOne.y.value;
+        return false;
+      }
+    </script>
+    <form name="controllerOne" onsubmit="return updateInput()">
+      <input name="x" value="0"/>
+      <input name="y" value="0"/>
+      <input type="submit" />
+    </form>
     <canvas id="canvas" width="800" height="400"></canvas>
     <script src="dist/bundle.js"></script>
     <div id='ax0'>0</div>
