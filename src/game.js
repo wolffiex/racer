@@ -31,6 +31,8 @@ function getElapsedTime() {
 let cars = [new Car(new Sprite('./assets/RacerMK1.png'))];
 function gameLoop() {
 
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
   let ms = getElapsedTime();
   for (var i=0; i< ms; i++) {
     cars.forEach(car => car.update());
